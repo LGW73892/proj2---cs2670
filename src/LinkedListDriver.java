@@ -14,7 +14,7 @@ public class LinkedListDriver{
      */
     public static void main(String[] args) {
 
-        SortedLinkedList list = new SortedLinkedList();
+        DoublyLinkedList<Comparable> list = new DortedLinkedList<>();
 
         String fileName = "input.txt";
 
@@ -40,7 +40,7 @@ public class LinkedListDriver{
         } catch (IOException e) {
             System.out.println("Error reading the file: " + e.getMessage());
         }  // Print the sorted list
-            System.out.println("Sorted Linked List:");
+            System.out.println("Doubly Linked List:");
             list.print();
 
 

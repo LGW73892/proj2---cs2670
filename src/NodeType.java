@@ -6,12 +6,13 @@ public class NodeType<T extends Comparable<T>> {
     public T info;
     public NodeType<T> next;
     public NodeType<T> back;
-};
-public class DoublyLinkedList<T extends Comparable<T>> {
 
-    public void deleteItem(T item)v{
+    public NodeType(T info) {
+
+        this.info = info;
+        this.next = null;
+        this.back = null;
+
     }
-    // other methods
 
-    private NodeType<T> head;
-};
+}
