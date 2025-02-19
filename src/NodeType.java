@@ -1,15 +1,17 @@
 /**
  * this class stores infromation in a node with info and the next node
  */
-public class NodeType {
+public class NodeType<T extends Comparable<T>> {
 
-    public ItemType info;
-    public NodeType next;
+    public T info;
+    public NodeType<T> next;
+    public NodeType<T> back;
+};
+public class DoublyLinkedList<T extends Comparable<T>> {
 
-    public NodeType() {
+    public void deleteItem(T item)v{
+    }
+    // other methods
 
-        info = null;
-        next = null;
-    } // consructor
-
-} // NodeType
+    private NodeType<T> head;
+};
