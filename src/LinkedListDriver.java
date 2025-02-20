@@ -24,9 +24,9 @@ public class LinkedListDriver{
 
             try {
 
-            String[] numbers = line.split("\\s+");
+            String[] content = line.split("\\s+");
             ItemType item = new ItemType();
-            for (String num : numbers) {
+            for (String num : content) {
                 int value = Integer.parseInt(num.trim());
 
                 item = new ItemType();

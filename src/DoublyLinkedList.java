@@ -65,7 +65,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                 if (currentPos.info.compareTo(item) == 1) {
                     NodeType<T> tmp = new NodeType<T>(item);
                     if (currentPos.next != null) {
-                    tmp.next = currentPos.next;
+                        tmp.next = currentPos.next;
                     }
                     tmp.info = currentPos.info;
                     currentPos.info = item;
@@ -203,25 +203,63 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         System.out.println("print reverse");
 
     } // printReverse
-    public void deleteSubsection() {
+    public void deleteSubsection(T start, T end ) {
+
+                    this.currentPos = this.head;
+                    NodeType<T> lowerBound = null;
+                    NodeType<T> upperBound = null;
+
+                    while (currentPos.info.compareTo(start) < 0) {
+
+                        currentPos = currentPos.next;
+
+                    } //while
+
+                    lowerBound = currentPos;
+
+                    currentPos = tail;
+
+                    while (currentPos.info.compareTo(end) > 0) {
+
+                        currentPos = currentPos.back;
+
+                    } // while
+
+                    upperBound = currentPos;
+
+                    if (lowerBound.back != null && upperBound.next != null) {
+
+                        lowerBound.back.next = upperBound.next;
+                        upperBound.next.back = lowerBound.back;
+
+                    } else if (upperBound.next != null && lowerBound.back == null){ // if
+
+                        this.head = upperBound.next;
+                        upperBound.back = null;
+
+                    } else if (upperBound.next == null && lowerBound.back != null){ // else
+
+                        this.tail = lowerBound.back;
+                        lowerBound.next = null;
 
 
-        System.out.println("delete subsection");
 
-    } // DeleteAlternateNodes
+                            } // else if
 
-    public void reverseList() {
+            } // DeleteAlternateNodes
 
-        System.out.println("reverseList");
+            public void reverseList() {
 
-    } // reverseList
+                System.out.println("reverseList");
 
-
-    public void swapAlternat() {
-
-        System.out.println("swapAlternat");
-
-    } // swapAlternat
+            } // reverseList
 
 
-} // DoublyLinkedList
+            public void swapAlternat() {
+
+                System.out.println("swapAlternat");
+
+            } // swapAlternat
+
+
+        } // DoublyLinkedList
