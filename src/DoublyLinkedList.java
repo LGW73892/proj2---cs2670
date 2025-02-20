@@ -252,8 +252,21 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
             public void reverseList() {
 
-                System.out.println("reverseList");
+                NodeType<T> temp = null;
+                this.currentPos = this.head;
 
+                while (currentPos != null) {
+
+                    temp = currentPos.back;
+                    currentPos.back = currentPos.next;
+                    currentPos.next = temp;
+                    currentPos = currentPos.back;
+
+
+                } // while
+
+                this.head = temp.back;
+                this.tail = currentPos;
             } // reverseList
 
 
