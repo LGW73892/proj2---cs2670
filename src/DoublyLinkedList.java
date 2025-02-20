@@ -244,8 +244,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
 
 
-                            } // else if
-
+                    } else if (upperBound.next == null && lowerBound.back == null) {
+                        head = null;
+                        tail = null;
+                    } // else if
             } // DeleteAlternateNodes
 
             public void reverseList() {
