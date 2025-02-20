@@ -28,6 +28,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if ( this.head == null ) {
             this.head = new NodeType<T>(item);
             this.currentPos = head;
+            this.tail = this.head;
             return;
         } // if
 
@@ -35,6 +36,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if (currentPos.info.compareTo(item) == 1) {
             NodeType<T> tmp = new NodeType<T>(item);
             tmp.next = currentPos;
+            currentPos.back=tmp;
             this.head = tmp;
 
         } // if
@@ -51,7 +53,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             if (currentPos.next == null) {
                 currentPos.next = new NodeType<T>(item);
                 currentPos.next.info = item;
+                currentPos.next.back = currentPos;
                 currentPos = currentPos.next;
+                this.tail = currentPos;
             } else {
                 currentPos = currentPos.next;
 
@@ -70,6 +74,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                     tmp.info = currentPos.info;
                     currentPos.info = item;
                     currentPos.next = tmp;
+                    currentPos.next.back = currentPos;
 
                 } // if
 
@@ -123,12 +128,14 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                     return;
 
                 } else if (currentPos.next != null) {
-
+                    currentPos.back = prev;
                     prev.next = currentPos.next;
                     return;
 
                 }// else if
             } // if
+
+
             prev = currentPos;
             currentPos = currentPos.next;
 
@@ -168,10 +175,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             //System.out.printf("%d ", currentPos.info);
             //currentPos = currentPos.next;
 
-            currentPos = currentPos.next;
             System.out.print(currentPos.info);
             System.out.print(" ");
             System.out.println();
+            currentPos = currentPos.next;
 
         } // while
 
@@ -186,18 +193,19 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
         this.currentPos = this.head;
 
-        while (currentPos != null) {
+        while (currentPos.next != null) {
 
             currentPos = currentPos.next;
 
         } // while
 
-        while (currentPos != currentPos) {
+        while (currentPos != null) {
 
-            currentPos = currentPos.back;
             System.out.print(currentPos.info);
             System.out.print(" ");
             System.out.println();
+            currentPos = currentPos.back;
+
         } // while
 
         System.out.println("print reverse");
@@ -272,8 +280,35 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
             public void swapAlternat() {
 
-                System.out.println("swapAlternat");
+                this.currentPos = this.head;
 
+                while (currentPos != null && currentPos.next != null) {
+
+                    NodeType<T> temp1 = currentPos;
+                    NodeType<T> temp2 = currentPos.next;
+
+                    if ( temp1.back != null) {
+                        temp1.back.next = temp2;
+                    } else { head = temp2; }
+
+                    if ( temp2.next != null) {
+                        temp2.next.back = temp1;
+                    }
+
+
+                    temp1.next = temp2.next;
+                    temp2.back = temp1.back;
+                    temp2.next = temp1;
+                    temp1.back = temp2;
+
+
+
+
+                    currentPos = temp1.next;
+
+                } // while
+
+                System.out.println("sss");
             } // swapAlternat
 
 
