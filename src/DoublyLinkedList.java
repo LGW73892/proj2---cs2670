@@ -6,8 +6,8 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
 
     /**
-     * This class holds the linked list and what the linked list can do
-     * and can be done to the linked list
+     * This class holds the Doubly linked list and what the Doubly linked
+     list can do and can be done to the Doubly linked list
      */
     public DoublyLinkedList() {
 
@@ -19,7 +19,8 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     /**
      * This method allows you to insert items into the linked list
-     * @param item is what is stored in the list
+     * @param item is what is stored in the list string int or double
+     * @output the output for this function is an updated double linked list
      */
     public void insertItem(T item ) {
 
@@ -91,8 +92,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
 
     /**
-     * allows the user to delete items by entering the number to delete
+     * allows the user to delete items by entering the element to delete
      * @param item is what is stored in the list
+     * @output is the list with the specified element removed
      */
     public void deleteItem (T item) {
 
@@ -148,6 +150,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     /**
      * returns the length of the linkedList
+     * @input is the specified double linked list
      * @return length of list
      */
     public int length() {
@@ -165,7 +168,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
 
 
-
+    /**
+     * The print method cycles through the list and prints out its contents
+     *
+     */
     public void print () {
 
         this.currentPos = this.head;
@@ -211,6 +217,13 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         System.out.println("print reverse");
 
     } // printReverse
+
+
+    /**
+     * the node that contains the item is removed from the list. If the
+     * item is not present in the list, print the message that is
+     * shown in the example output.
+     */
     public void deleteSubsection(T start, T end ) {
 
                     this.currentPos = this.head;
@@ -256,60 +269,71 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                         head = null;
                         tail = null;
                     } // else if
-            } // DeleteAlternateNodes
-
-            public void reverseList() {
-
-                NodeType<T> temp = null;
-                this.currentPos = this.head;
-
-                while (currentPos != null) {
-
-                    temp = currentPos.back;
-                    currentPos.back = currentPos.next;
-                    currentPos.next = temp;
-                    currentPos = currentPos.back;
+    } // DeleteAlternateNodes
 
 
-                } // while
+    /**
+     * This function reverses the linked list without the creation of an
+     * additional list.
+     *
+     * @output is the reversed list.
+     */
+    public void reverseList() {
 
-                this.head = temp.back;
-                this.tail = currentPos;
-            } // reverseList
+        NodeType<T> temp = null;
+        this.currentPos = this.head;
 
+        while (currentPos != null) {
 
-            public void swapAlternat() {
-
-                this.currentPos = this.head;
-
-                while (currentPos != null && currentPos.next != null) {
-
-                    NodeType<T> temp1 = currentPos;
-                    NodeType<T> temp2 = currentPos.next;
-
-                    if ( temp1.back != null) {
-                        temp1.back.next = temp2;
-                    } else { head = temp2; }
-
-                    if ( temp2.next != null) {
-                        temp2.next.back = temp1;
-                    }
+            temp = currentPos.back;
+            currentPos.back = currentPos.next;
+            currentPos.next = temp;
+            currentPos = currentPos.back;
 
 
-                    temp1.next = temp2.next;
-                    temp2.back = temp1.back;
-                    temp2.next = temp1;
-                    temp1.back = temp2;
+        } // while
+
+        this.head = temp.back;
+        this.tail = currentPos;
+    } // reverseList
+
+    /**
+     * This function swaps every other node with ever other node flipping
+     * the 2 making it alternating.
+     * @output the nodes flip flop on a linked list.
+     */
+    public void swapAlternate() {
+
+        this.currentPos = this.head;
+
+        while (currentPos != null && currentPos.next != null) {
+
+            NodeType<T> temp1 = currentPos;
+            NodeType<T> temp2 = currentPos.next;
+
+            if ( temp1.back != null) {
+                temp1.back.next = temp2;
+            } else { head = temp2; }
+
+            if ( temp2.next != null) {
+                temp2.next.back = temp1;
+            }
+
+
+            temp1.next = temp2.next;
+            temp2.back = temp1.back;
+            temp2.next = temp1;
+            temp1.back = temp2;
 
 
 
 
-                    currentPos = temp1.next;
+            currentPos = temp1.next;
 
-                } // while
+        } // while
 
-                System.out.println("sss");
-            } // swapAlternat
+        System.out.println("sss");
+    } // swapAlternat
 
 
-        } // DoublyLinkedList
+} // DoublyLinkedList
