@@ -1,5 +1,5 @@
 /**
- * this class stores infromation in a node with info and the next node
+ * this class stores infromation in a node with info back and the next node
  */
 public class NodeType<T extends Comparable<T>> {
 
