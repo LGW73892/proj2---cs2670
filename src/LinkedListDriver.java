@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 /**
  * The linked list driver class provides the scanner and user inupt portions of
- * the project and makes calls to SortedLinkedList
+ * the project and makes calls to DoublyLinkedList
  */
-public class LinkedListDriver{
+public class LinkedListDriver {
 
     /**
      * main method is what prompts the user and provides the desired output
